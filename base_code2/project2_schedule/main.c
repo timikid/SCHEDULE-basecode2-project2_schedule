@@ -14,6 +14,9 @@ int main(int argc, char *argv[]) {
 	char word[300];
 	char name[200];
 	char place[100], typeName[100];	
+	char cmonth[5];
+	char ctype[5];
+	char cday[5];
 	size_t size;
 	int month;
 	int day;
@@ -41,30 +44,57 @@ int main(int argc, char *argv[]) {
 	//2. read from the file
 	while ( /* fill code here -- read from the file*/fgets(word,60,fp))
 	{
-	  
-	int i,j=0;
-	while(word[i]!=' ')
-    {
-   	    name[j]=word[i];
+		
+        int i,j=0;
+	    while(word[i]!=' ')
+        {
+       	    name[j]=word[i];
+	        i++;
+	        j++;
+        }
 	    i++;
-	    j++;
-    }
-	i++;
-	j=0;
+	    j=0;
 	
-  	while(word[i]!=' ')
-	{
-	    place[j]=word[i];
+  	    while(word[i]!=' ')
+	    {
+	        place[j]=word[i];
+	        i++;
+	        j++;
+		}
+        i++;
+	    j=0;
+
+        while(word[i]!=' ')
+	    {
+            ctype[j]=word[i];
+	        i++;
+	        j++;
+	    }
+	    type= atoi(ctype);
+	
 	    i++;
-	    j++;
-
-    }
-    i++;
-	j=0;
-
-    type=word[i]-'0';
-    month=word[i++]-'0';
-    day=word[i++]-'0'
+	    j=0;
+	
+    	while(word[i]!=' ')
+    	{
+            cmonth[j]=word[i];
+	        i++;
+	        j++;
+	    }
+	    month= atoi(cmonth);
+	
+	    i++;
+	    j=0;
+	
+    	while(word[i]!=' ')
+    	{
+            cday[j]=word[i];
+	        i++;
+	        j++;
+	    }
+	    day= atoi(cday);
+    
+    
     
     
 
