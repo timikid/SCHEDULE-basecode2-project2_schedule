@@ -39,13 +39,35 @@ int main(int argc, char *argv[]) {
 	
 	
 	//2. read from the file
-	while ( /* fill code here -- read from the file*/(word[300]=gets(fp)!=EOF))
-	{	
-	    int i;
-        while(word[i]==' ')
-		{
-        	name[i]=word[i];
-		}
+	while ( /* fill code here -- read from the file*/fgets(word,60,fp))
+	{
+	  
+	int i,j=0;
+	while(word[i]!=' ')
+    {
+   	    name[j]=word[i];
+	    i++;
+	    j++;
+    }
+	i++;
+	j=0;
+	
+  	while(word[i]!=' ')
+	{
+	    place[j]=word[i];
+	    i++;
+	    j++;
+
+    }
+    i++;
+	j=0;
+
+    type=word[i]-'0';
+    month=word[i++]-'0';
+    day=word[i++]-'0'
+    
+    
+
 	    
 
 		//fill code here -- generate genSchedInfo structure by genSchedInfo function
