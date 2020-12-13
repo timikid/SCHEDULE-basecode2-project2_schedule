@@ -16,7 +16,7 @@ int main(int argc, char *argv[]) {
 	char place[100], typeName[100];	
 	char cmonth[5];
 	char ctype[5];
-	char cday[5];
+	char cday[5];  //문자로 입력받을 정수들 위해 우선 배열선언  
 	size_t size;
 	int month;
 	int day;
@@ -42,7 +42,7 @@ int main(int argc, char *argv[]) {
 	
 	
 	//2. read from the file
-	while ( /* fill code here -- read from the file*/fgets(word,60,fp))
+	while ( /* fill code here -- read from the file*/fgets(word,60,fp)!=NULL) //페이지 끝날 때 까지 한줄씩 입력 반복  
 	{
 		
         int i,j=0;
@@ -70,7 +70,7 @@ int main(int argc, char *argv[]) {
 	        i++;
 	        j++;
 	    }
-	    type= atoi(ctype);
+	    type= atoi(ctype);    //배열로 입력받은 수 atoi함수로 정수로 변환  
 	
 	    i++;
 	    j=0;
