@@ -84,12 +84,14 @@ void sched_print(void* obj)
 void* sched_genSchedInfo(char* name, char* place, int type, int month, int day)
 {
 	schedInfo_t* schedPtr;
-	
 	//error handler
 	//allocate memory and set the member variables
 	schedPtr = (schedInfo_t*)malloc(sizeof(schedInfo_t));
-	schedPtr->name = name;
-	schedPtr->place = place;
+	strcpy(schedPtr->name,(char *)name); 
+	printf("%s",schedPtr->name);
+
+	strcpy(schedPtr->place,(char *)place);
+	printf("%s",schedPtr->place);
 	schedPtr->type = type;
 	schedPtr->month = month;
 	schedPtr->day = day;	
