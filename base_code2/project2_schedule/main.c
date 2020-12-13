@@ -53,6 +53,7 @@ int main(int argc, char *argv[]) {
 	        i++;
 	        j++;
         }
+        name[j]='\0';     //이번 턴에 입력된 문자만 인식되게  
 	    i++;
 	    j=0;
 	
@@ -61,8 +62,8 @@ int main(int argc, char *argv[]) {
   	        place[j]=word[i];
 	        i++;
 	        j++;
-	     
-		}
+	   	}
+	   	place[j]='\0';   //이번 턴에 입력된 문자만 인식되게
         i++;
 	    j=0;
 
