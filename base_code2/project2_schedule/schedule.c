@@ -59,16 +59,15 @@ void sched_printTypes(void)
 
 void sched_print(void* obj) 
 {
-	schedInfo_t* schedPtr = (schedInfo_t*)obj;
-	
+	schedInfo_t* schedPtr = (schedInfo_t*)obj; 
 	if (schedPtr == NULL) {
 		printf("[ERROR] failed to print the schedule Info! (object is NULL)\n");
 	}
 	
-	printf("Schedule Name : %s (%s)\n", schedPtr->name, type_string[schedPtr->type]);
+	printf("Schedule Name : %s (%s)\n",schedPtr->name, type_string[schedPtr->type]);
 	printf("When : %s. %i\n", month_string[schedPtr->month], schedPtr->day);
 	printf("Where : %s\n", schedPtr->place);
-	
+
 	return;
 }
 
@@ -87,11 +86,10 @@ void* sched_genSchedInfo(char* name, char* place, int type, int month, int day)
 	//error handler
 	//allocate memory and set the member variables
 	schedPtr = (schedInfo_t*)malloc(sizeof(schedInfo_t));
-	strcpy(schedPtr->name,(char *)name); 
-	printf("%s",schedPtr->name);
-
-	strcpy(schedPtr->place,(char *)place);
-	printf("%s",schedPtr->place);
+	strcpy(schedPtr->name,(char *)name);         //구조체 멤버 name에 입력받은 name 문자열 복사  
+	//printf("%s",schedPtr->name);
+    strcpy(schedPtr->place,(char *)place);
+	//printf("%s",schedPtr->place);
 	schedPtr->type = type;
 	schedPtr->month = month;
 	schedPtr->day = day;	
@@ -104,14 +102,20 @@ void* sched_genSchedInfo(char* name, char* place, int type, int month, int day)
 //get month information from the scheduler info structure
 float sched_getMonth(void* obj)
 {
-	
+   schedInfo_t* schedPtr = obj;
+   float getmonth;
+   getmonth = schedPtr->month;
+   return getmonth;
 }
 
 
 //get type information from the scheduler info structure
 int sched_getType(void* obj)
 {
-	
+	schedInfo_t* schedPtr = obj;
+	int getType;
+	getType = schedPtr->type;
+	return getType;
 }
 
 
@@ -119,7 +123,10 @@ int sched_getType(void* obj)
 //get place string information from the scheduler info structure
 char* sched_getPlace(void* obj)
 {
-
+	schedInfo_t* schedPtr = obj;
+    char getPlace[30];
+    strcpy(getPlace,schedPtr->place);
+    return getPlace;
 }
 
 //convert the name of the type into the enum(integer) value
