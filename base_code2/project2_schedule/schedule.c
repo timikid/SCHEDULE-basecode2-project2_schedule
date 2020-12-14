@@ -122,15 +122,12 @@ int sched_getType(void* obj)
 
 //get place string information from the scheduler info structure
 
-char* sched_getPlace(void* obj)
+char* sched_getPlace(void* obj, char* getPlace)       //문자 입력받고 리턴할 문자배열 getPlace 추가  
 {
-/*
+    
 	schedInfo_t* schedPtr = obj;
-    char getPlace[30];
     strcpy(getPlace,schedPtr->place);
     return getPlace;
-*/
-	return NULL;
 }
 
 //convert the name of the type into the enum(integer) value
