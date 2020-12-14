@@ -24,6 +24,7 @@ node_t* genNode(void)
 	{
 		ndPtr->next = NULL;
 		ndPtr->obj = NULL;
+		ndPtr->index=0;
 	}
 	
 	return ndPtr;	
@@ -127,6 +128,7 @@ int list_addTail(void* obj, void* list)
 	listPtr = travelList(list, LIST_END);
 	listPtr->next = newNdPtr;
 	newNdPtr->index = listPtr->index+1;
+	printf("%i",newNdPtr->index);
 	
 	return 0;
 }

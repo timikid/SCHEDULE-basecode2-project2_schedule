@@ -149,12 +149,11 @@ int main(int argc, char *argv[]) {
 		{
 			case 1: //print all the schedules
 				printf("printing all the schedules in the scheduler.....\n\n\n");
-				
+				list_getIndexNd(0, list);
 				ndPtr = list;
 				while (list_isEndNode(ndPtr) == 0)    
 				{
 					// print count and each scheduling info element
-					
 					printf("___________________________\n");
 					sched_print(schedInfo);
 					
