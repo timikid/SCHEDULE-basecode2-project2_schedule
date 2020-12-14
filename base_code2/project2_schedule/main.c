@@ -45,6 +45,7 @@ int main(int argc, char *argv[]) {
 	while ( /* fill code here -- read from the file*/fgets(word,50,fp)!=NULL) //페이지 끝날 때 까지 한줄씩 입력 반복  
 	{   
 	    printf("*\n");
+	    printf("%s",word);
 	    int i=0;
 	    int j=0;
 	    
@@ -182,8 +183,7 @@ int main(int argc, char *argv[]) {
 				    printf("___________________________\n");
 				
 				break;
-}
-}/*
+
 			case 3:
 				printf("which place ? : ");
 				scanf("%s", place);
@@ -191,27 +191,41 @@ int main(int argc, char *argv[]) {
 				ndPtr = list;
 				while (list_isEndNode(ndPtr) == 0)
 				{
+					if(strncmp(sched_getPlace(schedInfo),place,strlen(place))==0)
+					{
+						printf("%s",sched_getPlace(schedInfo));
+						printf("___________________________\n");
+					    sched_print(schedInfo);
+					}
+					
 					//file code here -- print scheduling info elements matching to the place
 					ndPtr = list_getNextNd(ndPtr); //get the next node from the list
 					schedInfo = list_getNdObj(ndPtr); //get the object (scheduling info)
 					
 					//fill code this part - end
 				}
+				printf("___________________________\n");
 				
 				break;
-				
+			
+	
+			
 			case 4:
 				printf("which type ?\n");
 				sched_printTypes();
 				printf("your choice : ");
 				scanf("%s", typeName);
-				
+				printf("%i",sched_convertType(typeName));
+			}
+		}
+/*				
 				if (/* fill code here -- convert the type and check if the type is valid)
 				{
 					ndPtr = list;
 					while (list_isEndNode(ndPtr) == 0)
 					{
 						//file code here -- print scheduling info elements matching to the place
+						
 						ndPtr = list_getNextNd(ndPtr); //get the next node from the list
 						schedInfo = list_getNdObj(ndPtr); //get the object (scheduling info)
 						

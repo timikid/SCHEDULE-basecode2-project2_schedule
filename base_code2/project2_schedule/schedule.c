@@ -132,6 +132,9 @@ char* sched_getPlace(void* obj)
 //convert the name of the type into the enum(integer) value
 int sched_convertType(char* typeName)
 {
+	int getType;
+	getType = (scheduleType_e)typeName;
 	
+	return getType;
 }
 
