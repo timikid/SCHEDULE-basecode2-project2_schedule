@@ -51,9 +51,9 @@ typedef struct schedInfo
 void sched_printTypes(void) 
 {
 	int i;
-	
-	for (i=0;i<MAX_TYPE;i++) {
-		printf("- %s\n", i, type_string[i]);
+	for (i=0;i<MAX_TYPE;i++) 
+	{
+		printf("%i- %s\n", i, type_string[i]);
 	}
 }
 
@@ -133,8 +133,23 @@ char* sched_getPlace(void* obj)
 int sched_convertType(char* typeName)
 {
 	int getType;
-	getType = (scheduleType_e)typeName;
+	char type[30];
+	int i;
+	int j=0;
 	
+	strcpy(type,typeName);
+	getType = type[30];
+   
+	for (i=0;i<MAX_TYPE;i++)   
+	{
+		if(strncmp(typeName,type_string[i],strlen(type_string[i]))!=0)
+		j++;
+	}
+	
+	if(j==0)
+	return -1;
+	
+	else
 	return getType;
 }
 

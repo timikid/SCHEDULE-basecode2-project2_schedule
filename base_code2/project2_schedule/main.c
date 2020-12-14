@@ -190,8 +190,8 @@ int main(int argc, char *argv[]) {
 				
 				ndPtr = list;
 				while (list_isEndNode(ndPtr) == 0)
-				{
-					if(strncmp(sched_getPlace(schedInfo),place,strlen(place))==0)
+				{  
+					if(strncmp(sched_getPlace(schedInfo),place,strlen(place))==0)    //스케줄의 장소와 입력받은 place가 같다면 
 					{
 						printf("%s",sched_getPlace(schedInfo));
 						printf("___________________________\n");
@@ -215,29 +215,32 @@ int main(int argc, char *argv[]) {
 				sched_printTypes();
 				printf("your choice : ");
 				scanf("%s", typeName);
-				printf("%i",sched_convertType(typeName));
-			}
-		}
-/*				
-				if (/* fill code here -- convert the type and check if the type is valid)
+
+		
+			if (/* fill code here -- convert the type and check if the type is valid*/sched_convertType(typeName)!=-1)
 				{
 					ndPtr = list;
 					while (list_isEndNode(ndPtr) == 0)
 					{
 						//file code here -- print scheduling info elements matching to the place
-						
+						if(sched_convertType(typeName)==sched_getType(schedInfo))
+						{
+						printf("___________________________\n");
+					    sched_print(schedInfo);
+					    }
 						ndPtr = list_getNextNd(ndPtr); //get the next node from the list
 						schedInfo = list_getNdObj(ndPtr); //get the object (scheduling info)
 						
 						//fill code this part - end
 					}
-				}
+				    printf("___________________________\n");
+			    }
 				else
 				{
 					printf("wrong type name!\n");
 				}
 				break;
-				
+			
 			case 5:
 				printf("Bye!\n\n");
 				exit_flag = 1;
@@ -250,6 +253,6 @@ int main(int argc, char *argv[]) {
 		
 		
 	}
-*/
-	return 0;
+  
+  return 0;
 }
