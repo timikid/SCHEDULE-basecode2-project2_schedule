@@ -228,7 +228,6 @@ int main(int argc, char *argv[]) {
 				sched_printTypes();
 				printf("your choice : ");
 				scanf("%s", typeName);
-				printf("%i",sched_convertType(typeName));
 
 		    //해당함수에서, 입력받은 Type이 유효하지 않은 Type이면 -1 값 리턴
 			if (sched_convertType(typeName)!=-1)        

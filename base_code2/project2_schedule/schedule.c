@@ -139,12 +139,14 @@ int sched_convertType(char* typeName)
 	int j=0;
 	
 	strcpy(type,typeName);
-	getType = type[30];
-   
+    
 	for (i=0;i<MAX_TYPE;i++)   
 	{
-		if(strncmp(typeName,type_string[i],strlen(type_string[i]))!=0)   //입력받은 타입네임과  
+		if(strncmp(typeName,type_string[i],strlen(type_string[i]))==0)    
+		{
+		getType=i;
 		j++;
+	    }
 	}
 	
 	if(j==0)
