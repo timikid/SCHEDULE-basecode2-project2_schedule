@@ -42,30 +42,31 @@ int main(int argc, char *argv[]) {
 	
 	
 	//2. read from the file
-	while ( /* fill code here -- read from the file*/fgets(word,50,fp)!=NULL) //페이지 끝날 때 까지 한줄씩 입력 반복  
+	int line=0;
+	while (fgets(word,50,fp)!=NULL)    //페이지 끝날 때 까지 한줄씩 입력 반복  
 	{   
 	    printf("*\n");
-	    printf("%s",word);
+	    printf("%d : %s",line++,word);
 	    int i=0;
 	    int j=0;
 	    
-	    while(word[i]!=' ')
+	    while(word[i]!=' ')    //띄어쓰기를 만나면 name입력받기 중지  
         {
        	    name[j]=word[i];
 	        i++;
 	        j++;
         }
-        name[j]='\0';     //이번 턴에 입력된 문자만 인식되게  
+        name[j]='\0';         //이번 턴에 입력된 문자만 인식되게 단어 끝에 \0 
 	    i++;
 	    j=0;
 	    
-  	    while(word[i]!=' ')
+  	    while(word[i]!=' ')   
   	    {
   	        place[j]=word[i];
 	        i++;
 	        j++;
 	   	}
-	   	place[j]='\0';   //이번 턴에 입력된 문자만 인식되게
+	   	place[j]='\0';   
         i++;
 	    j=0;
 
@@ -76,7 +77,7 @@ int main(int argc, char *argv[]) {
 	        j++;
 
 	    }
-	    type= atoi(ctype);    //배열로 입력받은 수 atoi함수로 정수로 변환  
+	    type= atoi(ctype);         //배열로 입력받은 수(문자)  atoi함수로 정수로 변환  
 	
 	    i++;
 	    j=0;
@@ -166,8 +167,8 @@ int main(int argc, char *argv[]) {
 				ndPtr = list;
 				while (list_isEndNode(ndPtr) == 0)
 				{
-					//file code here -- print scheduling info elements matching to the month
-					if(sched_getMonth(schedInfo)==month)
+					//입력받은month와 구조체의month같으면 스케줄 프린트
+					if(sched_getMonth(schedInfo)==month)             
 					{
 					printf("___________________________\n");
 					sched_print(schedInfo);
@@ -184,6 +185,8 @@ int main(int argc, char *argv[]) {
 				
 				break;
 
+
+
 			case 3:
 				printf("which place ? : ");
 				scanf("%s", place);
@@ -191,7 +194,8 @@ int main(int argc, char *argv[]) {
 				ndPtr = list;
 				while (list_isEndNode(ndPtr) == 0)
 				{  
-					if(strncmp(sched_getPlace(schedInfo),place,strlen(place))==0)    //스케줄의 장소와 입력받은 place가 같다면 
+				    //스케줄의 장소와 입력받은 place가 같다면 스케줄 print 
+					if(strncmp(sched_getPlace(schedInfo),place,strlen(place))==0)    
 					{
 						printf("%s",sched_getPlace(schedInfo));
 						printf("___________________________\n");
@@ -216,18 +220,19 @@ int main(int argc, char *argv[]) {
 				printf("your choice : ");
 				scanf("%s", typeName);
 
-		
-			if (/* fill code here -- convert the type and check if the type is valid*/sched_convertType(typeName)!=-1)
+		    //해당함수에서, 입력받은 Type이 유효하지 않은 Type이면 -1 값 리턴
+			if (sched_convertType(typeName)!=-1)        
 				{
 					ndPtr = list;
 					while (list_isEndNode(ndPtr) == 0)
 					{
-						//file code here -- print scheduling info elements matching to the place
+						//입력받은 타입네임과 스케줄 구조체안의 타입네임이 같다면 (정수형태로 비교) 
 						if(sched_convertType(typeName)==sched_getType(schedInfo))
 						{
 						printf("___________________________\n");
 					    sched_print(schedInfo);
 					    }
+						
 						ndPtr = list_getNextNd(ndPtr); //get the next node from the list
 						schedInfo = list_getNdObj(ndPtr); //get the object (scheduling info)
 						
@@ -235,11 +240,14 @@ int main(int argc, char *argv[]) {
 					}
 				    printf("___________________________\n");
 			    }
+				
 				else
 				{
 					printf("wrong type name!\n");
 				}
 				break;
+			
+			
 			
 			case 5:
 				printf("Bye!\n\n");

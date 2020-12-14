@@ -121,12 +121,16 @@ int sched_getType(void* obj)
 
 
 //get place string information from the scheduler info structure
+
 char* sched_getPlace(void* obj)
 {
+/*
 	schedInfo_t* schedPtr = obj;
     char getPlace[30];
     strcpy(getPlace,schedPtr->place);
     return getPlace;
+*/
+	return NULL;
 }
 
 //convert the name of the type into the enum(integer) value
@@ -142,12 +146,12 @@ int sched_convertType(char* typeName)
    
 	for (i=0;i<MAX_TYPE;i++)   
 	{
-		if(strncmp(typeName,type_string[i],strlen(type_string[i]))!=0)
+		if(strncmp(typeName,type_string[i],strlen(type_string[i]))!=0)   //입력받은 타입네임과  
 		j++;
 	}
 	
 	if(j==0)
-	return -1;
+	return -1;              //Type 종류에 입력받은 Type 존재하지 않으면 -1 리턴   
 	
 	else
 	return getType;
